@@ -2,14 +2,13 @@
 import random 
 import json
 
-with open('emojis-items.txt') as f:
+with open('emoji-items.txt') as f:
 	items = f.readlines()
 items = [x.strip() for x in items]
 
 with open('emoji-forest.txt') as g:
 	forest = g.readlines()
 forest = [x.strip() for x in forest]
-
 
 
 def unicode2String(emoji):
