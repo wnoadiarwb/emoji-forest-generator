@@ -1,5 +1,6 @@
 
 import random 
+import json
 
 with open('emojis-items.txt') as f:
 	items = f.readlines()
@@ -17,21 +18,27 @@ def unicode2String(emoji):
 
 	return uniPyString
 
+def convertCharacter(emoji):
+	return chr(int(emoji[2:], 16))
+
 forestString = ""
 
 def generateForest():
 	global forestString
 	for z in range(1500):
-		r = random.randint(0,5)
+		r = random.randint(0,15)
 		if r == 0:
-			forestString += unicode2String(random.choice(items))
-		if r > 0 and r < 3:
+			forestString += convertCharacter(random.choice(items))
+		if r > 0 and r < 13:
 			forestString += " "
-		if r >= 3:
-			forestString += unicode2String(random.choice(forest))
+		if r >= 13:
+			forestString += convertCharacter(random.choice(forest))
 
 generateForest()
 
-OutputFile = open("output.txt","w") 
-OutputFile.write(forestString) 
+# with open('output.json', 'w') as out_f:
+# 	json.dump(forestString, out_f)
+
+OutputFile = open("output.txt","w",encoding="utf8") 
+OutputFile.write(forestString)
 OutputFile.close()
