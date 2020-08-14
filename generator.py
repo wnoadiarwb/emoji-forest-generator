@@ -30,6 +30,7 @@ def generateForest():
 		if r == 0:
 			forestString += convertCharacter(random.choice(items))
 		if r > 0 and r < 13:
+			# forestString += random.choice((" ", "🌲"))
 			forestString += " "
 		if r >= 13:
 			forestString += convertCharacter(random.choice(forest))
